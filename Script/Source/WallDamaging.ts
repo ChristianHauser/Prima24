@@ -41,7 +41,10 @@ namespace Script {
       }
     }
     onCollisionEnter(_event: ƒ.EventPhysics){
-
+      if (_event.cmpRigidbody.node.name == "Player") {
+        console.log("hitplayer");
+        
+      }
 
     }
 

@@ -44,6 +44,7 @@ namespace Script {
       if (_event.cmpRigidbody.node.name == "Torpedo") {
         //remove obstacle node so it can no longer damage the player
         this.node.getParent().removeChild(this.node);
+        _event.cmpRigidbody.node.getParent().removeChild(_event.cmpRigidbody.node);
       }else if(_event.cmpRigidbody.node.name == "Player"){
         console.log("PlayerHit");
       }

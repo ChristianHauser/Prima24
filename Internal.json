@@ -101,8 +101,97 @@
         {
           "ƒ.GraphInstance": {
             "deserializeFromSource": true,
-            "name": "Pipe",
-            "idSource": "Graph|2024-02-20T14:44:39.300Z|81985"
+            "name": "Player",
+            "idSource": "Graph|2024-02-21T10:51:36.870Z|22919"
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "UIElement",
+            "active": true,
+            "components": {
+              "UserInterface": [
+                {
+                  "Script.UserInterface": {
+                    "active": true,
+                    "message": "UserInterface added to ",
+                    "score": 0
+                  }
+                }
+              ]
+            },
+            "children": []
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "LoadMaterial",
+            "active": true,
+            "components": {
+              "ComponentTransform": [
+                {
+                  "ƒ.ComponentTransform": {
+                    "local": {
+                      "translation": "[0, 100, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ]
+            },
+            "children": [
+              {
+                "ƒ.GraphInstance": {
+                  "deserializeFromSource": true,
+                  "name": "Torpedo",
+                  "idSource": "Graph|2024-02-21T17:37:05.368Z|14967"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "MoveEverything",
+            "active": true,
+            "components": {
+              "PipeLogic": [
+                {
+                  "Script.PipeLogic": {
+                    "active": true,
+                    "message": "PipeLogic added to ",
+                    "speed": 1
+                  }
+                }
+              ],
+              "ComponentTransform": [
+                {
+                  "ƒ.ComponentTransform": {
+                    "local": {
+                      "translation": "[0, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ]
+            },
+            "children": [
+              {
+                "ƒ.GraphInstance": {
+                  "deserializeFromSource": true,
+                  "name": "Pipe",
+                  "idSource": "Graph|2024-02-20T14:44:39.300Z|81985"
+                }
+              }
+            ]
           }
         },
         {
@@ -377,118 +466,6 @@
               }
             ]
           }
-        },
-        {
-          "ƒ.GraphInstance": {
-            "deserializeFromSource": true,
-            "name": "Player",
-            "idSource": "Graph|2024-02-21T10:51:36.870Z|22919"
-          }
-        },
-        {
-          "ƒ.Node": {
-            "name": "PipeStart",
-            "active": true,
-            "components": {
-              "ComponentTransform": [
-                {
-                  "ƒ.ComponentTransform": {
-                    "local": {
-                      "translation": "[0, 0, 0]",
-                      "rotation": "[0, 0, 0]",
-                      "scaling": "[1, 1, 1]"
-                    },
-                    "Component": {
-                      "active": true
-                    }
-                  }
-                }
-              ],
-              "ComponentMesh": [
-                {
-                  "ƒ.ComponentMesh": {
-                    "idMesh": "MeshQuad|2024-02-20T17:01:43.977Z|52884",
-                    "pivot": {
-                      "translation": "[0, 0, 0]",
-                      "rotation": "[0, 0, 0]",
-                      "scaling": "[1, 1, 1]"
-                    },
-                    "Component": {
-                      "active": true
-                    }
-                  }
-                }
-              ],
-              "ComponentMaterial": [
-                {
-                  "ƒ.ComponentMaterial": {
-                    "sortForAlpha": false,
-                    "clrPrimary": "[1, 1, 1, 1]",
-                    "clrSecondary": "[1, 1, 1, 1]",
-                    "pivot": {
-                      "translation": "[0, 0]",
-                      "rotation": 0,
-                      "scaling": "[1, 1]"
-                    },
-                    "Component": {
-                      "active": true
-                    },
-                    "idMaterial": "Material|2024-02-20T13:32:21.121Z|45773"
-                  }
-                }
-              ]
-            },
-            "children": []
-          }
-        },
-        {
-          "ƒ.Node": {
-            "name": "UIElement",
-            "active": true,
-            "components": {
-              "UserInterface": [
-                {
-                  "Script.UserInterface": {
-                    "active": true,
-                    "message": "UserInterface added to ",
-                    "score": 0
-                  }
-                }
-              ]
-            },
-            "children": []
-          }
-        },
-        {
-          "ƒ.Node": {
-            "name": "LoadMaterial",
-            "active": true,
-            "components": {
-              "ComponentTransform": [
-                {
-                  "ƒ.ComponentTransform": {
-                    "local": {
-                      "translation": "[0, 100, 0]",
-                      "rotation": "[0, 0, 0]",
-                      "scaling": "[1, 1, 1]"
-                    },
-                    "Component": {
-                      "active": true
-                    }
-                  }
-                }
-              ]
-            },
-            "children": [
-              {
-                "ƒ.GraphInstance": {
-                  "deserializeFromSource": true,
-                  "name": "GraphInstance",
-                  "idSource": "Graph|2024-02-21T17:37:05.368Z|14967"
-                }
-              }
-            ]
-          }
         }
       ],
       "idResource": "Graph|2024-02-18T11:03:44.070Z|23768",
@@ -757,450 +734,559 @@
             "children": [
               {
                 "ƒ.Node": {
-                  "name": "1",
+                  "name": "Obstacle1",
                   "active": true,
-                  "components": {
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, 0, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
+                  "components": {},
+                  "children": [
+                    {
+                      "ƒ.Node": {
+                        "name": "1",
+                        "active": true,
+                        "components": {
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentRigidbody": [
+                            {
+                              "ƒ.ComponentRigidbody": {
+                                "initialization": "TO_PIVOT",
+                                "friction": 0.2,
+                                "restitution": 0.2,
+                                "mass": 1,
+                                "dampTranslation": 0.1,
+                                "dampRotation": 0.1,
+                                "effectGravity": 1,
+                                "typeBody": "KINEMATIC",
+                                "typeCollider": "CUBE",
+                                "isTrigger": true,
+                                "id": 0,
+                                "pivot": {
+                                  "translation": "[210, 20, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[16, 50, 100]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "MoveRigidAlong": [
+                            {
+                              "Script.MoveRigidAlong": {
+                                "active": true,
+                                "message": "CustomComponentScript added to "
+                              }
+                            }
+                          ],
+                          "WallDamaging": [
+                            {
+                              "Script.WallDamaging": {
+                                "active": true,
+                                "message": "WallDamaging added to "
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
                       }
-                    ],
-                    "ComponentRigidbody": [
-                      {
-                        "ƒ.ComponentRigidbody": {
-                          "initialization": "TO_PIVOT",
-                          "friction": 0.2,
-                          "restitution": 0.2,
-                          "mass": 1,
-                          "dampTranslation": 0.1,
-                          "dampRotation": 0.1,
-                          "effectGravity": 1,
-                          "typeBody": "KINEMATIC",
-                          "typeCollider": "CUBE",
-                          "isTrigger": true,
-                          "id": 0,
-                          "pivot": {
-                            "translation": "[210, 20, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[16, 50, 100]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "MoveRigidAlong": [
-                      {
-                        "Script.MoveRigidAlong": {
-                          "active": true,
-                          "message": "CustomComponentScript added to "
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
+                    }
+                  ]
                 }
               },
               {
                 "ƒ.Node": {
-                  "name": "2",
+                  "name": "Obstacle2",
                   "active": true,
-                  "components": {
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, 0, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
+                  "components": {},
+                  "children": [
+                    {
+                      "ƒ.Node": {
+                        "name": "2",
+                        "active": true,
+                        "components": {
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentRigidbody": [
+                            {
+                              "ƒ.ComponentRigidbody": {
+                                "initialization": "TO_PIVOT",
+                                "friction": 0.2,
+                                "restitution": 0.2,
+                                "mass": 1,
+                                "dampTranslation": 0.1,
+                                "dampRotation": 0.1,
+                                "effectGravity": 1,
+                                "typeBody": "KINEMATIC",
+                                "typeCollider": "CUBE",
+                                "isTrigger": true,
+                                "id": 0,
+                                "pivot": {
+                                  "translation": "[433, 22, -26]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[16, 54, 58]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "MoveRigidAlong": [
+                            {
+                              "Script.MoveRigidAlong": {
+                                "active": true,
+                                "message": "CustomComponentScript added to "
+                              }
+                            }
+                          ],
+                          "WallDamaging": [
+                            {
+                              "Script.WallDamaging": {
+                                "active": true,
+                                "message": "WallDamaging added to "
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
                       }
-                    ],
-                    "ComponentRigidbody": [
-                      {
-                        "ƒ.ComponentRigidbody": {
-                          "initialization": "TO_PIVOT",
-                          "friction": 0.2,
-                          "restitution": 0.2,
-                          "mass": 1,
-                          "dampTranslation": 0.1,
-                          "dampRotation": 0.1,
-                          "effectGravity": 1,
-                          "typeBody": "KINEMATIC",
-                          "typeCollider": "CUBE",
-                          "isTrigger": true,
-                          "id": 0,
-                          "pivot": {
-                            "translation": "[433, 22, -26]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[16, 54, 58]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
+                    },
+                    {
+                      "ƒ.Node": {
+                        "name": "3",
+                        "active": true,
+                        "components": {
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentRigidbody": [
+                            {
+                              "ƒ.ComponentRigidbody": {
+                                "initialization": "TO_PIVOT",
+                                "friction": 0.2,
+                                "restitution": 0.2,
+                                "mass": 1,
+                                "dampTranslation": 0.1,
+                                "dampRotation": 0.1,
+                                "effectGravity": 1,
+                                "typeBody": "KINEMATIC",
+                                "typeCollider": "CUBE",
+                                "isTrigger": true,
+                                "id": 0,
+                                "pivot": {
+                                  "translation": "[433, -24, 21]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[16, 54, 58]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "MoveRigidAlong": [
+                            {
+                              "Script.MoveRigidAlong": {
+                                "active": true,
+                                "message": "CustomComponentScript added to "
+                              }
+                            }
+                          ],
+                          "WallDamaging": [
+                            {
+                              "Script.WallDamaging": {
+                                "active": true,
+                                "message": "WallDamaging added to "
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
                       }
-                    ],
-                    "MoveRigidAlong": [
-                      {
-                        "Script.MoveRigidAlong": {
-                          "active": true,
-                          "message": "CustomComponentScript added to "
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
+                    }
+                  ]
                 }
               },
               {
                 "ƒ.Node": {
-                  "name": "3",
+                  "name": "Obstacle3",
                   "active": true,
-                  "components": {
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, 0, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
+                  "components": {},
+                  "children": [
+                    {
+                      "ƒ.Node": {
+                        "name": "4",
+                        "active": true,
+                        "components": {
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentRigidbody": [
+                            {
+                              "ƒ.ComponentRigidbody": {
+                                "initialization": "TO_PIVOT",
+                                "friction": 0.2,
+                                "restitution": 0.2,
+                                "mass": 1,
+                                "dampTranslation": 0.1,
+                                "dampRotation": 0.1,
+                                "effectGravity": 1,
+                                "typeBody": "KINEMATIC",
+                                "typeCollider": "CUBE",
+                                "isTrigger": true,
+                                "id": 0,
+                                "pivot": {
+                                  "translation": "[646, -19, -26]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[16, 54, 58]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "MoveRigidAlong": [
+                            {
+                              "Script.MoveRigidAlong": {
+                                "active": true,
+                                "message": "CustomComponentScript added to "
+                              }
+                            }
+                          ],
+                          "WallDamaging": [
+                            {
+                              "Script.WallDamaging": {
+                                "active": true,
+                                "message": "WallDamaging added to "
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
                       }
-                    ],
-                    "ComponentRigidbody": [
-                      {
-                        "ƒ.ComponentRigidbody": {
-                          "initialization": "TO_PIVOT",
-                          "friction": 0.2,
-                          "restitution": 0.2,
-                          "mass": 1,
-                          "dampTranslation": 0.1,
-                          "dampRotation": 0.1,
-                          "effectGravity": 1,
-                          "typeBody": "KINEMATIC",
-                          "typeCollider": "CUBE",
-                          "isTrigger": true,
-                          "id": 0,
-                          "pivot": {
-                            "translation": "[433, -24, 21]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[16, 54, 58]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
+                    },
+                    {
+                      "ƒ.Node": {
+                        "name": "5",
+                        "active": true,
+                        "components": {
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentRigidbody": [
+                            {
+                              "ƒ.ComponentRigidbody": {
+                                "initialization": "TO_PIVOT",
+                                "friction": 0.2,
+                                "restitution": 0.2,
+                                "mass": 1,
+                                "dampTranslation": 0.1,
+                                "dampRotation": 0.1,
+                                "effectGravity": 1,
+                                "typeBody": "KINEMATIC",
+                                "typeCollider": "CUBE",
+                                "isTrigger": true,
+                                "id": 0,
+                                "pivot": {
+                                  "translation": "[646, 23, 21]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[16, 54, 58]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "MoveRigidAlong": [
+                            {
+                              "Script.MoveRigidAlong": {
+                                "active": true,
+                                "message": "CustomComponentScript added to "
+                              }
+                            }
+                          ],
+                          "WallDamaging": [
+                            {
+                              "Script.WallDamaging": {
+                                "active": true,
+                                "message": "WallDamaging added to "
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
                       }
-                    ],
-                    "MoveRigidAlong": [
-                      {
-                        "Script.MoveRigidAlong": {
-                          "active": true,
-                          "message": "CustomComponentScript added to "
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
+                    }
+                  ]
                 }
               },
               {
                 "ƒ.Node": {
-                  "name": "4",
+                  "name": "Obstacle4",
                   "active": true,
-                  "components": {
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, 0, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
+                  "components": {},
+                  "children": [
+                    {
+                      "ƒ.Node": {
+                        "name": "6",
+                        "active": true,
+                        "components": {
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentRigidbody": [
+                            {
+                              "ƒ.ComponentRigidbody": {
+                                "initialization": "TO_PIVOT",
+                                "friction": 0.2,
+                                "restitution": 0.2,
+                                "mass": 1,
+                                "dampTranslation": 0.1,
+                                "dampRotation": 0.1,
+                                "effectGravity": 1,
+                                "typeBody": "KINEMATIC",
+                                "typeCollider": "CUBE",
+                                "isTrigger": true,
+                                "id": 0,
+                                "pivot": {
+                                  "translation": "[852, 0, -21]",
+                                  "rotation": "[-90, 0, 0]",
+                                  "scaling": "[16, 50, 100]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "MoveRigidAlong": [
+                            {
+                              "Script.MoveRigidAlong": {
+                                "active": true,
+                                "message": "CustomComponentScript added to "
+                              }
+                            }
+                          ],
+                          "WallDamaging": [
+                            {
+                              "Script.WallDamaging": {
+                                "active": true,
+                                "message": "WallDamaging added to "
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
                       }
-                    ],
-                    "ComponentRigidbody": [
-                      {
-                        "ƒ.ComponentRigidbody": {
-                          "initialization": "TO_PIVOT",
-                          "friction": 0.2,
-                          "restitution": 0.2,
-                          "mass": 1,
-                          "dampTranslation": 0.1,
-                          "dampRotation": 0.1,
-                          "effectGravity": 1,
-                          "typeBody": "KINEMATIC",
-                          "typeCollider": "CUBE",
-                          "isTrigger": true,
-                          "id": 0,
-                          "pivot": {
-                            "translation": "[646, -19, -26]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[16, 54, 58]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "MoveRigidAlong": [
-                      {
-                        "Script.MoveRigidAlong": {
-                          "active": true,
-                          "message": "CustomComponentScript added to "
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
+                    }
+                  ]
                 }
               },
               {
                 "ƒ.Node": {
-                  "name": "5",
+                  "name": "Obstacle5",
                   "active": true,
-                  "components": {
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, 0, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
+                  "components": {},
+                  "children": [
+                    {
+                      "ƒ.Node": {
+                        "name": "7",
+                        "active": true,
+                        "components": {
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentRigidbody": [
+                            {
+                              "ƒ.ComponentRigidbody": {
+                                "initialization": "TO_PIVOT",
+                                "friction": 0.2,
+                                "restitution": 0.2,
+                                "mass": 1,
+                                "dampTranslation": 0.1,
+                                "dampRotation": 0.1,
+                                "effectGravity": 1,
+                                "typeBody": "KINEMATIC",
+                                "typeCollider": "CUBE",
+                                "isTrigger": true,
+                                "id": 0,
+                                "pivot": {
+                                  "translation": "[1066, 3, 18]",
+                                  "rotation": "[-90, 0, 0]",
+                                  "scaling": "[16, 50, 100]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "MoveRigidAlong": [
+                            {
+                              "Script.MoveRigidAlong": {
+                                "active": true,
+                                "message": "CustomComponentScript added to "
+                              }
+                            }
+                          ],
+                          "WallDamaging": [
+                            {
+                              "Script.WallDamaging": {
+                                "active": true,
+                                "message": "WallDamaging added to "
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
                       }
-                    ],
-                    "ComponentRigidbody": [
-                      {
-                        "ƒ.ComponentRigidbody": {
-                          "initialization": "TO_PIVOT",
-                          "friction": 0.2,
-                          "restitution": 0.2,
-                          "mass": 1,
-                          "dampTranslation": 0.1,
-                          "dampRotation": 0.1,
-                          "effectGravity": 1,
-                          "typeBody": "KINEMATIC",
-                          "typeCollider": "CUBE",
-                          "isTrigger": true,
-                          "id": 0,
-                          "pivot": {
-                            "translation": "[646, 23, 21]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[16, 54, 58]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
+                    },
+                    {
+                      "ƒ.Node": {
+                        "name": "8",
+                        "active": true,
+                        "components": {
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentRigidbody": [
+                            {
+                              "ƒ.ComponentRigidbody": {
+                                "initialization": "TO_PIVOT",
+                                "friction": 0.2,
+                                "restitution": 0.2,
+                                "mass": 1,
+                                "dampTranslation": 0.1,
+                                "dampRotation": 0.1,
+                                "effectGravity": 1,
+                                "typeBody": "KINEMATIC",
+                                "typeCollider": "CUBE",
+                                "isTrigger": true,
+                                "id": 0,
+                                "pivot": {
+                                  "translation": "[1066, -19, -33]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[16, 53, 50]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "MoveRigidAlong": [
+                            {
+                              "Script.MoveRigidAlong": {
+                                "active": true,
+                                "message": "CustomComponentScript added to "
+                              }
+                            }
+                          ],
+                          "WallDamaging": [
+                            {
+                              "Script.WallDamaging": {
+                                "active": true,
+                                "message": "WallDamaging added to "
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
                       }
-                    ],
-                    "MoveRigidAlong": [
-                      {
-                        "Script.MoveRigidAlong": {
-                          "active": true,
-                          "message": "CustomComponentScript added to "
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
-                }
-              },
-              {
-                "ƒ.Node": {
-                  "name": "6",
-                  "active": true,
-                  "components": {
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, 0, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "ComponentRigidbody": [
-                      {
-                        "ƒ.ComponentRigidbody": {
-                          "initialization": "TO_PIVOT",
-                          "friction": 0.2,
-                          "restitution": 0.2,
-                          "mass": 1,
-                          "dampTranslation": 0.1,
-                          "dampRotation": 0.1,
-                          "effectGravity": 1,
-                          "typeBody": "KINEMATIC",
-                          "typeCollider": "CUBE",
-                          "isTrigger": true,
-                          "id": 0,
-                          "pivot": {
-                            "translation": "[852, 0, -21]",
-                            "rotation": "[-90, 0, 0]",
-                            "scaling": "[16, 50, 100]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "MoveRigidAlong": [
-                      {
-                        "Script.MoveRigidAlong": {
-                          "active": true,
-                          "message": "CustomComponentScript added to "
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
-                }
-              },
-              {
-                "ƒ.Node": {
-                  "name": "7",
-                  "active": true,
-                  "components": {
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, 0, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "ComponentRigidbody": [
-                      {
-                        "ƒ.ComponentRigidbody": {
-                          "initialization": "TO_PIVOT",
-                          "friction": 0.2,
-                          "restitution": 0.2,
-                          "mass": 1,
-                          "dampTranslation": 0.1,
-                          "dampRotation": 0.1,
-                          "effectGravity": 1,
-                          "typeBody": "KINEMATIC",
-                          "typeCollider": "CUBE",
-                          "isTrigger": true,
-                          "id": 0,
-                          "pivot": {
-                            "translation": "[1066, 3, 18]",
-                            "rotation": "[-90, 0, 0]",
-                            "scaling": "[16, 50, 100]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "MoveRigidAlong": [
-                      {
-                        "Script.MoveRigidAlong": {
-                          "active": true,
-                          "message": "CustomComponentScript added to "
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
-                }
-              },
-              {
-                "ƒ.Node": {
-                  "name": "8",
-                  "active": true,
-                  "components": {
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, 0, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "ComponentRigidbody": [
-                      {
-                        "ƒ.ComponentRigidbody": {
-                          "initialization": "TO_PIVOT",
-                          "friction": 0.2,
-                          "restitution": 0.2,
-                          "mass": 1,
-                          "dampTranslation": 0.1,
-                          "dampRotation": 0.1,
-                          "effectGravity": 1,
-                          "typeBody": "KINEMATIC",
-                          "typeCollider": "CUBE",
-                          "isTrigger": true,
-                          "id": 0,
-                          "pivot": {
-                            "translation": "[1066, -19, -33]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[16, 53, 50]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "MoveRigidAlong": [
-                      {
-                        "Script.MoveRigidAlong": {
-                          "active": true,
-                          "message": "CustomComponentScript added to "
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
+                    }
+                  ]
                 }
               }
             ]
@@ -1401,12 +1487,7 @@
               "message": "PlayerLogic added to ",
               "isSpacePressed": false,
               "speed": 18,
-              "torque": 0.2,
-              "torqueMax": {
-                "x": 0,
-                "y": 0,
-                "z": 2
-              }
+              "torque": 0.2
             }
           }
         ]

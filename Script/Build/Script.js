@@ -77,6 +77,7 @@ var Script;
             if (_event.cmpRigidbody.node.name == "Torpedo") {
                 //remove obstacle node so it can no longer damage the player
                 this.node.getParent().removeChild(this.node);
+                _event.cmpRigidbody.node.getParent().removeChild(_event.cmpRigidbody.node);
             }
             else if (_event.cmpRigidbody.node.name == "Player") {
                 console.log("PlayerHit");
@@ -88,33 +89,53 @@ var Script;
 var Script;
 (function (Script) {
     var ƒ = FudgeCore;
+    var ƒAid = FudgeAid;
     ƒ.Debug.info("Main Program Template running!");
-    let viewport;
-    let sceneGraph;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
-        viewport = _event.detail;
-        sceneGraph = viewport.getBranch();
-        // setUpCamera();
-        ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, update);
-        ƒ.Loop.start(); // start the game loop to continuously draw the viewport, update the audiosystem and drive the physics i/a#
+        Script.viewport = _event.detail;
+        Script.sceneGraph = Script.viewport.getBranch();
+        //setUpCamera();
+        loadGame();
+        // ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
+        // ƒ.Loop.start();  // start the game loop to continuously draw the viewport, update the audiosystem and drive the physics i/a#
         //initialize
-        sceneGraph.getChildrenByName("Player")[0].getChildrenByName("Cannon")[0].getComponent(Script.SpawnProjectile).initialize();
+        Script.sceneGraph.getChildrenByName("Player")[0].getChildrenByName("Cannon")[0].getComponent(Script.SpawnProjectile).initialize();
+    }
+    async function loadGame() {
+        // load sprites
+        let imgSpriteSheet = new ƒ.TextureImage();
+        await imgSpriteSheet.load("./Sprite/Axplosion.png");
+        Script.explosionSprite = new ƒAid.NodeSprite("Explosion");
+        Script.explosionSprite.addComponent(new ƒ.ComponentTransform());
+        let coat = new ƒ.CoatTextured(undefined, imgSpriteSheet);
+        let explosionAnim = new ƒAid.SpriteSheetAnimation("Explode", coat);
+        explosionAnim.generateByGrid(ƒ.Rectangle.GET(0, 0, 192, 192), 12, 192, ƒ.ORIGIN2D.CENTER, ƒ.Vector2.X(192), ƒ.Vector2.Y(192));
+        Script.explosionSprite.setAnimation(explosionAnim);
+        Script.explosionSprite.framerate = 6;
+        Script.explosionSprite.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(90);
+        let spriteScale = 50;
+        Script.explosionSprite.getComponent(ƒ.ComponentTransform).mtxLocal.scale(new ƒ.Vector3(spriteScale, spriteScale, spriteScale));
+        startGame();
+    }
+    function startGame() {
+        ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, update);
+        ƒ.Loop.start();
     }
     function setUpCamera() {
-        let cameraReference = sceneGraph.getChildrenByName("Player")[0].getChildrenByName("CameraReference")[0];
+        let cameraReference = Script.sceneGraph.getChildrenByName("Player")[0].getChildrenByName("CameraReference")[0];
         //.getChildrenByName("RotationRigidbody")[0]
         cameraReference.getComponent(ƒ.ComponentTransform).mtxLocal;
-        viewport.camera.mtxPivot = cameraReference.mtxWorld;
+        Script.viewport.camera.mtxPivot = cameraReference.mtxWorld;
         // let localPlayerMtx: ƒ.Matrix4x4 = sceneGraph.getChildrenByName("Player")[0].getComponent(ƒ.ComponentTransform).mtxLocal;
         // let localCamReferenceMtx: ƒ.Matrix4x4 = cameraReference.getComponent(ƒ.ComponentTransform).mtxLocal;
         // viewport.camera.mtxPivot = 
-        viewport.camera.projectCentral(undefined, 90);
+        Script.viewport.camera.projectCentral(undefined, 90);
     }
     function update(_event) {
         ƒ.Physics.simulate(); // if physics is included and used
         setUpCamera();
-        viewport.draw();
+        Script.viewport.draw();
         ƒ.AudioManager.default.update();
     }
 })(Script || (Script = {}));
@@ -178,15 +199,13 @@ var Script;
         playerRigidBody;
         projectile;
         //private viewport: ƒ.Viewport;
-        sceneGraph;
-        rotationRigid;
         isSpacePressed = false;
         //private playRotationBody: ƒ.ComponentRigidbody = getComponent.
         constructor() {
             super();
             // Don't start when running in editor
             if (ƒ.Project.mode == ƒ.MODE.EDITOR) {
-                //console.log("notplaying");
+                console.log("notplaying");
                 return;
             }
             // Listen to this component being added to or removed from a node
@@ -214,8 +233,6 @@ var Script;
         };
         speed = 4;
         torque = 0.2;
-        torqueAngle;
-        torqueMax = new ƒ.Vector3(0, 0, 2);
         update = (_event) => {
             if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.A, ƒ.KEYBOARD_CODE.ARROW_LEFT])) {
                 this.playerRigidBody.applyForce(new ƒ.Vector3(0, 0, -this.speed));
@@ -364,10 +381,21 @@ var Script;
                     this.removeEventListener("componentRemove" /* ƒ.EVENT.COMPONENT_REMOVE */, this.hndEvent);
                     break;
                 case "nodeDeserialized" /* ƒ.EVENT.NODE_DESERIALIZED */:
-                    this.node.getComponent(ƒ.ComponentRigidbody).applyLinearImpulse(new ƒ.Vector3(100, 0, 0));
+                    let rigidbody = this.node.getComponent(ƒ.ComponentRigidbody);
+                    rigidbody.applyLinearImpulse(new ƒ.Vector3(100, 0, 0));
+                    rigidbody.addEventListener("ColliderEnteredCollision" /* ƒ.EVENT_PHYSICS.COLLISION_ENTER */, this.hitEvent);
                     break;
             }
         };
+        hitEvent(_event) {
+            Script.explosionSprite.getComponent(ƒ.ComponentTransform).mtxLocal.scale(new ƒ.Vector3(1, 1, 1));
+            //explosionSprite.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(90);
+            console.log(Script.explosionSprite.getComponent(ƒ.ComponentTransform).mtxLocal.rotation);
+            Script.sceneGraph.getChildrenByName("MoveEverything")[0].addChild(Script.explosionSprite);
+            Script.explosionSprite.mtxWorld.translation = this.node.mtxWorld.translation;
+            // console.log("AHHHHHHHHHHHHH" + sceneGraph.getChildrenByName("MoveEverything")[0].getChildren()[1]);
+            this.node.getParent().removeChild(this.node);
+        }
     }
     Script.TorpedoLogic = TorpedoLogic;
 })(Script || (Script = {}));
@@ -466,6 +494,9 @@ var Script;
             }
         };
         onCollisionEnter(_event) {
+            if (_event.cmpRigidbody.node.name == "Player") {
+                console.log("hitplayer");
+            }
         }
     }
     Script.WallDamaging = WallDamaging;

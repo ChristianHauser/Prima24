@@ -1,5 +1,6 @@
 namespace Script {
   import ƒ = FudgeCore;
+  
   ƒ.Project.registerScriptNamespace(Script);  // Register the namespace to FUDGE for serialization
   
   
@@ -43,12 +44,48 @@ namespace Script {
           this.removeEventListener(ƒ.EVENT.COMPONENT_REMOVE, this.hndEvent);
           break;
         case ƒ.EVENT.NODE_DESERIALIZED:
-          this.node.getComponent(ƒ.ComponentRigidbody).applyLinearImpulse(new ƒ.Vector3(100,0,0));
-          
+          let rigidbody: ƒ.ComponentRigidbody = this.node.getComponent(ƒ.ComponentRigidbody);
+          rigidbody.applyLinearImpulse(new ƒ.Vector3(100,0,0));
+          rigidbody.addEventListener(ƒ.EVENT_PHYSICS.COLLISION_ENTER, this.hitEvent);
           break;
       }
     }
 
+    hitEvent(_event: ƒ.EventPhysics) {
+
+      
+      explosionSprite.getComponent(ƒ.ComponentTransform).mtxLocal.scale(new ƒ.Vector3(1,1,1));
+      //explosionSprite.getComponent(ƒ.ComponentTransform).mtxLocal.rotateY(90);
+      console.log(explosionSprite.getComponent(ƒ.ComponentTransform).mtxLocal.rotation);
+      
+      sceneGraph.getChildrenByName("MoveEverything")[0].addChild(explosionSprite);
+      explosionSprite.mtxWorld.translation = this.node.mtxWorld.translation;
+      // console.log("AHHHHHHHHHHHHH" + sceneGraph.getChildrenByName("MoveEverything")[0].getChildren()[1]);
+
+
+      this.node.getParent().removeChild(this.node);
+    }
+
     
+
+    //playExplosionAnimation() 
+
+    // public async hndLoad(_event: Event): Promise<void> {
+    // let imgSpriteSheet: ƒ.TextureImage = new ƒ.TextureImage();
+    // await imgSpriteSheet.load("./Sprite/Explosion.png");
+        
+    // this.explosion = new AnimationHandler();
+    // this.explosion.initializeAnimations(imgSpriteSheet);
+
+   
+
+    // let cmpAudio: ƒ.ComponentAudio = this.graph.getComponent(ƒ.ComponentAudio);
+    // cmpAudio.volume = 0.1;
+    // console.log(cmpAudio);
+
+    // ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
+    // ƒ.Loop.start();
+  // }
+    //}
   }
 }

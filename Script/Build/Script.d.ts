@@ -1,4 +1,6 @@
 declare namespace Script {
+}
+declare namespace Script {
     import ƒ = FudgeCore;
     class CustomComponentScript extends ƒ.ComponentScript {
         static readonly iSubclass: number;
@@ -19,6 +21,11 @@ declare namespace Script {
     }
 }
 declare namespace Script {
+    import ƒ = FudgeCore;
+    import ƒAid = FudgeAid;
+    let viewport: ƒ.Viewport;
+    let sceneGraph: ƒ.Node;
+    let explosionSprite: ƒAid.NodeSprite;
 }
 declare namespace Script {
     import ƒ = FudgeCore;
@@ -40,15 +47,11 @@ declare namespace Script {
         playerModel: ƒ.ComponentTransform;
         playerRigidBody: ƒ.ComponentRigidbody;
         projectile: ƒ.ComponentRigidbody;
-        private sceneGraph;
-        private rotationRigid;
         isSpacePressed: boolean;
         constructor();
         hndEvent: (_event: Event) => void;
         speed: number;
         torque: number;
-        private torqueAngle;
-        private torqueMax;
         private update;
     }
 }
@@ -83,6 +86,7 @@ declare namespace Script {
         constructor();
         pipeConstruct: ƒ.ComponentTransform;
         hndEvent: (_event: Event) => void;
+        hitEvent(_event: ƒ.EventPhysics): void;
     }
 }
 declare namespace Script {

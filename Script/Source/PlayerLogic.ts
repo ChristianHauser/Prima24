@@ -15,8 +15,7 @@ namespace Script {
 
     
     //private viewport: ƒ.Viewport;
-    private sceneGraph: ƒ.Node;
-    private rotationRigid: ƒ.ComponentRigidbody;
+    
     
     public isSpacePressed: boolean = false;
     //private playRotationBody: ƒ.ComponentRigidbody = getComponent.
@@ -27,7 +26,7 @@ namespace Script {
 
       // Don't start when running in editor
       if (ƒ.Project.mode == ƒ.MODE.EDITOR){
-        //console.log("notplaying");
+        console.log("notplaying");
         return;
       }
       
@@ -62,8 +61,7 @@ namespace Script {
     
     public speed: number = 4;
     public torque: number = 0.2;
-    private torqueAngle: ƒ.Vector3;
-    private torqueMax: ƒ.Vector3 = new ƒ.Vector3(0,0,2);
+    
     
   
     private update = (_event: Event): void => {
