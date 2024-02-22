@@ -1,0 +1,1215 @@
+{
+  "MeshImport|2024-02-20T13:28:49.882Z|31324": {
+    "ƒ.MeshImport": {
+      "idResource": "MeshImport|2024-02-20T13:28:49.882Z|31324",
+      "name": "Pipe2.obj",
+      "type": "MeshImport",
+      "url": "Models\\Pipe2.obj",
+      "filetype": "OBJ"
+    }
+  },
+  "TextureImage|2024-02-20T13:35:31.840Z|45681": {
+    "ƒ.TextureImage": {
+      "url": "Materials\\Pipe\\Metal_Rusted_010_basecolor.jpg",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2024-02-20T13:35:31.840Z|45681",
+        "name": "Materials\\Pipe\\Metal_Rusted_010_basecolor.jpg",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2024-02-18T11:07:02.227Z|19946": {
+    "ƒ.Material": {
+      "name": "ShaderLitTextured",
+      "idResource": "Material|2024-02-18T11:07:02.227Z|19946",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]"
+        }
+      }
+    }
+  },
+  "MeshQuad|2024-02-20T17:01:43.977Z|52884": {
+    "ƒ.MeshQuad": {
+      "idResource": "MeshQuad|2024-02-20T17:01:43.977Z|52884",
+      "name": "MeshQuad"
+    }
+  },
+  "Material|2024-02-20T13:32:21.121Z|45773": {
+    "ƒ.Material": {
+      "name": "ShaderFlat",
+      "idResource": "Material|2024-02-20T13:32:21.121Z|45773",
+      "shader": "ShaderFlat",
+      "coat": {
+        "ƒ.CoatRemissive": {
+          "color": "[0.9019607843137255, 0, 0, 1]",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "MeshPyramid|2024-02-20T18:28:20.592Z|52641": {
+    "ƒ.MeshPyramid": {
+      "idResource": "MeshPyramid|2024-02-20T18:28:20.592Z|52641",
+      "name": "CameraRef",
+      "type": "MeshPyramid"
+    }
+  },
+  "Material|2024-02-20T14:44:06.033Z|19500": {
+    "ƒ.Material": {
+      "name": "ShaderFlat",
+      "idResource": "Material|2024-02-20T14:44:06.033Z|19500",
+      "shader": "ShaderFlat",
+      "coat": {
+        "ƒ.CoatRemissive": {
+          "color": "[1, 1, 1, 1]",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "Graph|2024-02-18T11:03:44.070Z|23768": {
+    "ƒ.Graph": {
+      "name": "WorldGraph",
+      "active": true,
+      "components": {
+        "ComponentLight": [
+          {
+            "ƒ.ComponentLight": {
+              "pivot": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "light": {
+                "ƒ.LightAmbient": {
+                  "color": "[1, 1, 1, 1]"
+                }
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ]
+      },
+      "children": [
+        {
+          "ƒ.GraphInstance": {
+            "deserializeFromSource": true,
+            "name": "Pipe",
+            "idSource": "Graph|2024-02-20T14:44:39.300Z|81985"
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "PipeCollOrigin",
+            "active": true,
+            "components": {},
+            "children": [
+              {
+                "ƒ.Node": {
+                  "name": "PipeCollision",
+                  "active": true,
+                  "components": {
+                    "ComponentTransform": [
+                      {
+                        "ƒ.ComponentTransform": {
+                          "local": {
+                            "translation": "[0, 0, 0]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[1, 1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentRigidbody": [
+                      {
+                        "ƒ.ComponentRigidbody": {
+                          "initialization": "TO_PIVOT",
+                          "friction": 0.2,
+                          "restitution": 0.2,
+                          "mass": 1,
+                          "dampTranslation": 0.1,
+                          "dampRotation": 0.1,
+                          "effectGravity": 1,
+                          "typeBody": "STATIC",
+                          "typeCollider": "CUBE",
+                          "isTrigger": false,
+                          "id": 0,
+                          "pivot": {
+                            "translation": "[0, 0, 40]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[150, 151, 4]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentMaterial": [
+                      {
+                        "ƒ.ComponentMaterial": {
+                          "sortForAlpha": false,
+                          "clrPrimary": "[1, 1, 1, 1]",
+                          "clrSecondary": "[1, 1, 1, 1]",
+                          "pivot": {
+                            "translation": "[0, 0]",
+                            "rotation": 0,
+                            "scaling": "[1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          },
+                          "idMaterial": "Material|2024-02-18T11:07:02.227Z|19946"
+                        }
+                      }
+                    ]
+                  },
+                  "children": []
+                }
+              },
+              {
+                "ƒ.Node": {
+                  "name": "PipeCollision",
+                  "active": true,
+                  "components": {
+                    "ComponentTransform": [
+                      {
+                        "ƒ.ComponentTransform": {
+                          "local": {
+                            "translation": "[0, 0, 0]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[1, 1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentRigidbody": [
+                      {
+                        "ƒ.ComponentRigidbody": {
+                          "initialization": "TO_PIVOT",
+                          "friction": 0.2,
+                          "restitution": 0.2,
+                          "mass": 1,
+                          "dampTranslation": 0.1,
+                          "dampRotation": 0.1,
+                          "effectGravity": 1,
+                          "typeBody": "STATIC",
+                          "typeCollider": "CUBE",
+                          "isTrigger": false,
+                          "id": 0,
+                          "pivot": {
+                            "translation": "[0, 0, -40]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[150, 151, 4]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentMaterial": [
+                      {
+                        "ƒ.ComponentMaterial": {
+                          "sortForAlpha": false,
+                          "clrPrimary": "[1, 1, 1, 1]",
+                          "clrSecondary": "[1, 1, 1, 1]",
+                          "pivot": {
+                            "translation": "[0, 0]",
+                            "rotation": 0,
+                            "scaling": "[1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          },
+                          "idMaterial": "Material|2024-02-18T11:07:02.227Z|19946"
+                        }
+                      }
+                    ]
+                  },
+                  "children": []
+                }
+              },
+              {
+                "ƒ.Node": {
+                  "name": "PipeCollision",
+                  "active": true,
+                  "components": {
+                    "ComponentTransform": [
+                      {
+                        "ƒ.ComponentTransform": {
+                          "local": {
+                            "translation": "[0, 0, 0]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[1, 1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentRigidbody": [
+                      {
+                        "ƒ.ComponentRigidbody": {
+                          "initialization": "TO_PIVOT",
+                          "friction": 0.2,
+                          "restitution": 0.2,
+                          "mass": 1,
+                          "dampTranslation": 0.1,
+                          "dampRotation": 0.1,
+                          "effectGravity": 1,
+                          "typeBody": "STATIC",
+                          "typeCollider": "CUBE",
+                          "isTrigger": false,
+                          "id": 0,
+                          "pivot": {
+                            "translation": "[0, 40, 0]",
+                            "rotation": "[90, 0, 0]",
+                            "scaling": "[150, 151, 4]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentMaterial": [
+                      {
+                        "ƒ.ComponentMaterial": {
+                          "sortForAlpha": false,
+                          "clrPrimary": "[1, 1, 1, 1]",
+                          "clrSecondary": "[1, 1, 1, 1]",
+                          "pivot": {
+                            "translation": "[0, 0]",
+                            "rotation": 0,
+                            "scaling": "[1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          },
+                          "idMaterial": "Material|2024-02-18T11:07:02.227Z|19946"
+                        }
+                      }
+                    ]
+                  },
+                  "children": []
+                }
+              },
+              {
+                "ƒ.Node": {
+                  "name": "PipeCollision",
+                  "active": true,
+                  "components": {
+                    "ComponentTransform": [
+                      {
+                        "ƒ.ComponentTransform": {
+                          "local": {
+                            "translation": "[0, 0, 0]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[1, 1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentRigidbody": [
+                      {
+                        "ƒ.ComponentRigidbody": {
+                          "initialization": "TO_PIVOT",
+                          "friction": 0.2,
+                          "restitution": 0.2,
+                          "mass": 1,
+                          "dampTranslation": 0.1,
+                          "dampRotation": 0.1,
+                          "effectGravity": 1,
+                          "typeBody": "STATIC",
+                          "typeCollider": "CUBE",
+                          "isTrigger": false,
+                          "id": 0,
+                          "pivot": {
+                            "translation": "[0, -40, 0]",
+                            "rotation": "[90, 0, 0]",
+                            "scaling": "[150, 151, 4]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentMaterial": [
+                      {
+                        "ƒ.ComponentMaterial": {
+                          "sortForAlpha": false,
+                          "clrPrimary": "[1, 1, 1, 1]",
+                          "clrSecondary": "[1, 1, 1, 1]",
+                          "pivot": {
+                            "translation": "[0, 0]",
+                            "rotation": 0,
+                            "scaling": "[1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          },
+                          "idMaterial": "Material|2024-02-18T11:07:02.227Z|19946"
+                        }
+                      }
+                    ]
+                  },
+                  "children": []
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ƒ.GraphInstance": {
+            "deserializeFromSource": true,
+            "name": "Player",
+            "idSource": "Graph|2024-02-21T10:51:36.870Z|22919"
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "PipeStart",
+            "active": true,
+            "components": {
+              "ComponentTransform": [
+                {
+                  "ƒ.ComponentTransform": {
+                    "local": {
+                      "translation": "[0, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "ComponentMesh": [
+                {
+                  "ƒ.ComponentMesh": {
+                    "idMesh": "MeshQuad|2024-02-20T17:01:43.977Z|52884",
+                    "pivot": {
+                      "translation": "[0, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "ComponentMaterial": [
+                {
+                  "ƒ.ComponentMaterial": {
+                    "sortForAlpha": false,
+                    "clrPrimary": "[1, 1, 1, 1]",
+                    "clrSecondary": "[1, 1, 1, 1]",
+                    "pivot": {
+                      "translation": "[0, 0]",
+                      "rotation": 0,
+                      "scaling": "[1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    },
+                    "idMaterial": "Material|2024-02-20T13:32:21.121Z|45773"
+                  }
+                }
+              ]
+            },
+            "children": []
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "UIElement",
+            "active": true,
+            "components": {
+              "UserInterface": [
+                {
+                  "Script.UserInterface": {
+                    "active": true,
+                    "message": "UserInterface added to ",
+                    "score": 0
+                  }
+                }
+              ]
+            },
+            "children": []
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "LoadMaterial",
+            "active": true,
+            "components": {
+              "ComponentTransform": [
+                {
+                  "ƒ.ComponentTransform": {
+                    "local": {
+                      "translation": "[0, 100, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ]
+            },
+            "children": [
+              {
+                "ƒ.GraphInstance": {
+                  "deserializeFromSource": true,
+                  "name": "Torpedo",
+                  "idSource": "Graph|2024-02-21T17:37:05.368Z|14967"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "idResource": "Graph|2024-02-18T11:03:44.070Z|23768",
+      "type": "Graph"
+    }
+  },
+  "Material|2024-02-18T11:06:23.031Z|05948": {
+    "ƒ.Material": {
+      "name": "UbootTexture",
+      "idResource": "Material|2024-02-18T11:06:23.031Z|05948",
+      "shader": "ShaderFlatTextured",
+      "coat": {
+        "ƒ.CoatRemissiveTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2024-02-18T11:15:50.646Z|29179",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "TextureImage|2024-02-18T11:15:50.646Z|29179": {
+    "ƒ.TextureImage": {
+      "url": "hovercraft.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2024-02-18T11:15:50.646Z|29179",
+        "name": "hovercraft.png",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "TextureImage|2024-02-18T11:21:27.407Z|66329": {
+    "ƒ.TextureImage": {
+      "url": "hovercraft11.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2024-02-18T11:21:27.407Z|66329",
+        "name": "hovercraft11.png",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "MeshImport|2024-02-20T14:55:34.031Z|12788": {
+    "ƒ.MeshImport": {
+      "idResource": "MeshImport|2024-02-20T14:55:34.031Z|12788",
+      "name": "Uboot.obj",
+      "type": "MeshImport",
+      "url": "Models\\Uboot.obj",
+      "filetype": "OBJ"
+    }
+  },
+  "Graph|2024-02-18T11:04:03.361Z|72504": {
+    "ƒ.Graph": {
+      "name": "PlayerModel",
+      "active": true,
+      "components": {
+        "ComponentMesh": [
+          {
+            "ƒ.ComponentMesh": {
+              "idMesh": "MeshImport|2024-02-20T14:55:34.031Z|12788",
+              "pivot": {
+                "translation": "[850, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentMaterial": [
+          {
+            "ƒ.ComponentMaterial": {
+              "sortForAlpha": false,
+              "clrPrimary": "[1, 1, 1, 1]",
+              "clrSecondary": "[1, 1, 1, 1]",
+              "pivot": {
+                "translation": "[0, 0]",
+                "rotation": 0,
+                "scaling": "[1, 1]"
+              },
+              "Component": {
+                "active": true
+              },
+              "idMaterial": "Material|2024-02-18T11:06:23.031Z|05948"
+            }
+          }
+        ],
+        "ComponentTransform": [
+          {
+            "ƒ.ComponentTransform": {
+              "local": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[0.9999999403953552, 0.9999999403953552, 0.9999999403953552]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ]
+      },
+      "children": [],
+      "idResource": "Graph|2024-02-18T11:04:03.361Z|72504",
+      "type": "Graph"
+    }
+  },
+  "MeshImport|2024-02-18T11:33:45.132Z|54110": {
+    "ƒ.MeshImport": {
+      "idResource": "MeshImport|2024-02-18T11:33:45.132Z|54110",
+      "name": "Uboot2.obj",
+      "type": "MeshImport",
+      "url": "Uboot2.obj",
+      "filetype": "OBJ"
+    }
+  },
+  "Material|2024-02-20T13:30:35.757Z|76248": {
+    "ƒ.Material": {
+      "name": "ShaderLit",
+      "idResource": "Material|2024-02-20T13:30:35.757Z|76248",
+      "shader": "ShaderLit",
+      "coat": {
+        "ƒ.CoatColored": {
+          "color": "[1, 1, 1, 0.68]"
+        }
+      }
+    }
+  },
+  "TextureImage|2024-02-20T13:38:02.874Z|35042": {
+    "ƒ.TextureImage": {
+      "url": "Materials\\Pipe\\Metal_Rusted_010_basecolor.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2024-02-20T13:38:02.874Z|35042",
+        "name": "Materials\\Pipe\\Metal_Rusted_010_basecolor.png",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2024-02-20T13:39:36.559Z|44851": {
+    "ƒ.Material": {
+      "name": "PipeTexture",
+      "idResource": "Material|2024-02-20T13:39:36.559Z|44851",
+      "shader": "ShaderFlatTextured",
+      "coat": {
+        "ƒ.CoatRemissiveTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2024-02-20T13:38:02.874Z|35042",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "MeshImport|2024-02-20T14:42:02.602Z|69847": {
+    "ƒ.MeshImport": {
+      "idResource": "MeshImport|2024-02-20T14:42:02.602Z|69847",
+      "name": "EndingPart.obj",
+      "type": "MeshImport",
+      "url": "Models\\EndingPart.obj",
+      "filetype": "OBJ"
+    }
+  },
+  "MeshImport|2024-02-20T14:42:04.484Z|10580": {
+    "ƒ.MeshImport": {
+      "idResource": "MeshImport|2024-02-20T14:42:04.484Z|10580",
+      "name": "ObstaclePlatforms.obj",
+      "type": "MeshImport",
+      "url": "Models\\ObstaclePlatforms.obj",
+      "filetype": "OBJ"
+    }
+  },
+  "MeshImport|2024-02-20T14:42:10.762Z|68678": {
+    "ƒ.MeshImport": {
+      "idResource": "MeshImport|2024-02-20T14:42:10.762Z|68678",
+      "name": "Pipe.obj",
+      "type": "MeshImport",
+      "url": "Models\\Pipe.obj",
+      "filetype": "OBJ"
+    }
+  },
+  "Material|2024-02-21T21:12:26.330Z|49323": {
+    "ƒ.Material": {
+      "name": "TorpedoColor",
+      "idResource": "Material|2024-02-21T21:12:26.330Z|49323",
+      "shader": "ShaderLit",
+      "coat": {
+        "ƒ.CoatColored": {
+          "color": "[1, 1, 1, 1]"
+        }
+      }
+    }
+  },
+  "Graph|2024-02-20T14:44:39.300Z|81985": {
+    "ƒ.Graph": {
+      "name": "Pipe",
+      "active": true,
+      "components": {
+        "ComponentTransform": [
+          {
+            "ƒ.ComponentTransform": {
+              "local": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "PipeLogic": [
+          {
+            "Script.PipeLogic": {
+              "active": true,
+              "message": "PipeLogic added to ",
+              "speed": 1
+            }
+          }
+        ]
+      },
+      "children": [
+        {
+          "ƒ.Node": {
+            "name": "Obstacles",
+            "active": true,
+            "components": {
+              "ComponentMesh": [
+                {
+                  "ƒ.ComponentMesh": {
+                    "idMesh": "MeshImport|2024-02-20T14:42:04.484Z|10580",
+                    "pivot": {
+                      "translation": "[850, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "ComponentMaterial": [
+                {
+                  "ƒ.ComponentMaterial": {
+                    "sortForAlpha": false,
+                    "clrPrimary": "[0.01568627450980392, 0.3843137254901961, 0.3411764705882353, 1]",
+                    "clrSecondary": "[1, 1, 1, 1]",
+                    "pivot": {
+                      "translation": "[0, 0]",
+                      "rotation": 0,
+                      "scaling": "[1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    },
+                    "idMaterial": "Material|2024-02-20T14:44:06.033Z|19500"
+                  }
+                }
+              ]
+            },
+            "children": []
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "Ending",
+            "active": true,
+            "components": {
+              "ComponentMesh": [
+                {
+                  "ƒ.ComponentMesh": {
+                    "idMesh": "MeshImport|2024-02-20T14:42:02.602Z|69847",
+                    "pivot": {
+                      "translation": "[850, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "ComponentMaterial": [
+                {
+                  "ƒ.ComponentMaterial": {
+                    "sortForAlpha": false,
+                    "clrPrimary": "[1, 1, 1, 1]",
+                    "clrSecondary": "[1, 1, 1, 1]",
+                    "pivot": {
+                      "translation": "[0, 0]",
+                      "rotation": 0,
+                      "scaling": "[1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    },
+                    "idMaterial": "Material|2024-02-21T21:12:26.330Z|49323"
+                  }
+                }
+              ],
+              "ComponentTransform": [
+                {
+                  "ƒ.ComponentTransform": {
+                    "local": {
+                      "translation": "[0, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "MoveRigidAlong": [
+                {
+                  "Script.MoveRigidAlong": {
+                    "active": true,
+                    "message": "CustomComponentScript added to "
+                  }
+                }
+              ],
+              "ComponentRigidbody": [
+                {
+                  "ƒ.ComponentRigidbody": {
+                    "initialization": "TO_PIVOT",
+                    "friction": 0.2,
+                    "restitution": 0.2,
+                    "mass": 1,
+                    "dampTranslation": 0.1,
+                    "dampRotation": 0.1,
+                    "effectGravity": 1,
+                    "typeBody": "KINEMATIC",
+                    "typeCollider": "CUBE",
+                    "isTrigger": true,
+                    "id": 4,
+                    "pivot": {
+                      "translation": "[1458, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[16, 100, 100]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "Ending": [
+                {
+                  "Script.Ending": {
+                    "active": true,
+                    "message": "CustomComponentScript added to "
+                  }
+                }
+              ]
+            },
+            "children": []
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "PipeModel",
+            "active": true,
+            "components": {
+              "ComponentMesh": [
+                {
+                  "ƒ.ComponentMesh": {
+                    "idMesh": "MeshImport|2024-02-20T14:42:10.762Z|68678",
+                    "pivot": {
+                      "translation": "[850, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "ComponentMaterial": [
+                {
+                  "ƒ.ComponentMaterial": {
+                    "sortForAlpha": false,
+                    "clrPrimary": "[1, 1, 1, 1]",
+                    "clrSecondary": "[1, 1, 1, 1]",
+                    "pivot": {
+                      "translation": "[0, 0]",
+                      "rotation": 0,
+                      "scaling": "[1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    },
+                    "idMaterial": "Material|2024-02-20T13:39:36.559Z|44851"
+                  }
+                }
+              ]
+            },
+            "children": []
+          }
+        }
+      ],
+      "idResource": "Graph|2024-02-20T14:44:39.300Z|81985",
+      "type": "Graph"
+    }
+  },
+  "Graph|2024-02-21T10:51:36.870Z|22919": {
+    "ƒ.Graph": {
+      "name": "Player",
+      "active": true,
+      "components": {
+        "ComponentTransform": [
+          {
+            "ƒ.ComponentTransform": {
+              "local": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentRigidbody": [
+          {
+            "ƒ.ComponentRigidbody": {
+              "initialization": "TO_PIVOT",
+              "friction": 0.20000000000000018,
+              "restitution": 0.2,
+              "mass": 1,
+              "dampTranslation": 0.4,
+              "dampRotation": 0.1,
+              "effectGravity": 0,
+              "typeBody": "DYNAMIC",
+              "typeCollider": "CUBE",
+              "isTrigger": false,
+              "id": 1,
+              "pivot": {
+                "translation": "[3, 2, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[13, 10, 12]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "PlayerMovement": [
+          {
+            "Script.PlayerMovement": {
+              "active": true,
+              "message": "PlayerMovement added to ",
+              "isSpacePressed": false,
+              "speed": 18,
+              "torque": 0.1,
+              "torqueMax": {
+                "x": 0,
+                "y": 0,
+                "z": 1.5
+              }
+            }
+          }
+        ]
+      },
+      "children": [
+        {
+          "ƒ.Node": {
+            "name": "CameraReference",
+            "active": true,
+            "components": {
+              "ComponentMesh": [
+                {
+                  "ƒ.ComponentMesh": {
+                    "idMesh": "MeshPyramid|2024-02-20T18:28:20.592Z|52641",
+                    "pivot": {
+                      "translation": "[0, 0, 0]",
+                      "rotation": "[-90, 0, 90]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "ComponentTransform": [
+                {
+                  "ƒ.ComponentTransform": {
+                    "local": {
+                      "translation": "[-30, 10, -8]",
+                      "rotation": "[0, 80, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "ComponentMaterial": [
+                {
+                  "ƒ.ComponentMaterial": {
+                    "sortForAlpha": false,
+                    "clrPrimary": "[1, 1, 1, 1]",
+                    "clrSecondary": "[1, 1, 1, 1]",
+                    "pivot": {
+                      "translation": "[0, 0]",
+                      "rotation": 0,
+                      "scaling": "[1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    },
+                    "idMaterial": "Material|2024-02-20T14:44:06.033Z|19500"
+                  }
+                }
+              ]
+            },
+            "children": []
+          }
+        },
+        {
+          "ƒ.GraphInstance": {
+            "deserializeFromSource": true,
+            "name": "PlayerModel",
+            "idSource": "Graph|2024-02-18T11:04:03.361Z|72504"
+          }
+        },
+        {
+          "ƒ.Node": {
+            "name": "Cannon",
+            "active": true,
+            "components": {
+              "ComponentTransform": [
+                {
+                  "ƒ.ComponentTransform": {
+                    "local": {
+                      "translation": "[12, 8, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "ComponentRigidbody": [
+                {
+                  "ƒ.ComponentRigidbody": {
+                    "initialization": "TO_PIVOT",
+                    "friction": 0.2,
+                    "restitution": 0.2,
+                    "mass": 1,
+                    "dampTranslation": 0.1,
+                    "dampRotation": 0.1,
+                    "effectGravity": 0,
+                    "typeBody": "DYNAMIC",
+                    "typeCollider": "CUBE",
+                    "isTrigger": false,
+                    "id": 2,
+                    "pivot": {
+                      "translation": "[0, 0, 0]",
+                      "rotation": "[0, 0, 0]",
+                      "scaling": "[1, 1, 1]"
+                    },
+                    "Component": {
+                      "active": false
+                    }
+                  }
+                }
+              ],
+              "SpawnProjectile": [
+                {
+                  "Script.SpawnProjectile": {
+                    "active": true,
+                    "message": "SpawnProjectile added to ",
+                    "amunition": 2
+                  }
+                }
+              ]
+            },
+            "children": []
+          }
+        }
+      ],
+      "idResource": "Graph|2024-02-21T10:51:36.870Z|22919",
+      "type": "Graph"
+    }
+  },
+  "MeshImport|2024-02-21T17:40:23.936Z|31561": {
+    "ƒ.MeshImport": {
+      "idResource": "MeshImport|2024-02-21T17:40:23.936Z|31561",
+      "name": "Torpedo.obj",
+      "type": "MeshImport",
+      "url": "Models\\Torpedo.obj",
+      "filetype": "OBJ"
+    }
+  },
+  "TextureImage|2024-02-21T17:58:52.640Z|58485": {
+    "ƒ.TextureImage": {
+      "url": "Materials\\Torpedo_2K_Albedo.jpg",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2024-02-21T17:58:52.640Z|58485",
+        "name": "Materials\\Torpedo_2K_Albedo.jpg",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2024-02-21T17:59:51.879Z|17513": {
+    "ƒ.Material": {
+      "name": "TorpedoMaterial",
+      "idResource": "Material|2024-02-21T17:59:51.879Z|17513",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2024-02-21T17:58:52.640Z|58485"
+        }
+      }
+    }
+  },
+  "Graph|2024-02-21T17:37:05.368Z|14967": {
+    "ƒ.Graph": {
+      "name": "Torpedo",
+      "active": true,
+      "components": {
+        "ComponentMesh": [
+          {
+            "ƒ.ComponentMesh": {
+              "idMesh": "MeshImport|2024-02-21T17:40:23.936Z|31561",
+              "pivot": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, -90, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentMaterial": [
+          {
+            "ƒ.ComponentMaterial": {
+              "sortForAlpha": false,
+              "clrPrimary": "[0.9372549019607843, 1, 0.0392156862745098, 1]",
+              "clrSecondary": "[1, 1, 1, 1]",
+              "pivot": {
+                "translation": "[0, 0]",
+                "rotation": 0,
+                "scaling": "[1, 1]"
+              },
+              "Component": {
+                "active": true
+              },
+              "idMaterial": "Material|2024-02-21T21:12:26.330Z|49323"
+            }
+          }
+        ],
+        "ComponentTransform": [
+          {
+            "ƒ.ComponentTransform": {
+              "local": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[8, 4, 4]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentRigidbody": [
+          {
+            "ƒ.ComponentRigidbody": {
+              "initialization": "TO_PIVOT",
+              "friction": 0.2,
+              "restitution": 0.2,
+              "mass": 1,
+              "dampTranslation": 0.1,
+              "dampRotation": 0.1,
+              "effectGravity": 0,
+              "typeBody": "DYNAMIC",
+              "typeCollider": "CUBE",
+              "isTrigger": false,
+              "id": 0,
+              "pivot": {
+                "translation": "[0.5, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[2, 0.5, 0.5]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "TorpedoLogic": [
+          {
+            "Script.TorpedoLogic": {
+              "active": true,
+              "message": "TorpedoLogic added to "
+            }
+          }
+        ]
+      },
+      "children": [],
+      "idResource": "Graph|2024-02-21T17:37:05.368Z|14967",
+      "type": "Graph"
+    }
+  }
+}

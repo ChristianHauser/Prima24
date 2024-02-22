@@ -1,0 +1,23 @@
+# Blender 3.6.8 MTL File: 'untitled.blend'
+# www.blender.org
+
+newmtl HighQualityPipe
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:/Downloads/drive-download-20240219T192739Z-001/Metal_Rusted_010_basecolor.jpg
+map_Ns D:/Downloads/drive-download-20240219T192739Z-001/Metal_Rusted_010_roughness.jpg
+map_refl D:/Downloads/drive-download-20240219T192739Z-001/Metal_Rusted_010_metallic.jpg
+
+newmtl Material.001
+Ns 127.815506
+Ka 1.000000 1.000000 1.000000
+Kd 0.252943 0.011145 0.009009
+Ks 0.512953 0.512953 0.512953
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
