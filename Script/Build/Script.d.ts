@@ -19,7 +19,6 @@ declare namespace Script {
     }
 }
 declare namespace Script {
-    function shouldStopLoop(shouldStop: boolean): void;
 }
 declare namespace Script {
     import ƒ = FudgeCore;
@@ -35,7 +34,7 @@ declare namespace Script {
 }
 declare namespace Script {
     import ƒ = FudgeCore;
-    class PlayerMovement extends ƒ.ComponentScript {
+    class PlayerLogic extends ƒ.ComponentScript {
         static readonly iSubclass: number;
         message: string;
         playerModel: ƒ.ComponentTransform;
@@ -99,6 +98,17 @@ declare namespace Script {
         hndEvent: (_event: Event) => void;
         runTimer: () => Promise<void>;
         updateScoreboard(): void;
+    }
+}
+declare namespace Script {
+    import ƒ = FudgeCore;
+    class WallDamaging extends ƒ.ComponentScript {
+        static readonly iSubclass: number;
+        message: string;
+        rigidBody: ƒ.ComponentRigidbody;
+        constructor();
+        hndEvent: (_event: Event) => void;
+        onCollisionEnter(_event: ƒ.EventPhysics): void;
     }
 }
 declare namespace Script {

@@ -19,15 +19,6 @@ namespace Script {
     //initialize
     sceneGraph.getChildrenByName("Player")[0].getChildrenByName("Cannon")[0].getComponent(SpawnProjectile).initialize();
   }
-
-  export function shouldStopLoop(shouldStop: boolean) {
-    if (shouldStop) {
-      ƒ.Loop.stop();
-      return;
-    }
-    ƒ.Loop.continue();
-  }
-
   
 
   function setUpCamera() {

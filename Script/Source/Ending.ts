@@ -42,8 +42,10 @@ namespace Script {
     }
     onCollisionEnter(_event: ƒ.EventPhysics) {
       if (_event.cmpRigidbody.node.name == "Torpedo") {
-        this.node.getComponent(ƒ.ComponentMesh).mtxPivot.translateY(100);
-        ƒ.Loop.stop();
+        //remove obstacle node so it can no longer damage the player
+        this.node.getParent().removeChild(this.node);
+      }else if(_event.cmpRigidbody.node.name == "Player"){
+        console.log("PlayerHit");
       }
 }      
   }

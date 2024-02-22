@@ -1,16 +1,15 @@
 namespace Script {
   import ƒ = FudgeCore;
   ƒ.Project.registerScriptNamespace(Script);  // Register the namespace to FUDGE for serialization
-  
-  //let pipeConstruct: ƒ.Node = sceneGraph.getChildrenByName("Pipe")[0];
-  export class PipeLogic extends ƒ.ComponentScript {
-    
+
+  export class WallDamaging extends ƒ.ComponentScript {
     // Register the script as component for use in the editor via drag&drop
-    public static readonly iSubclass: number = ƒ.Component.registerSubclass(PipeLogic);
+    public static readonly iSubclass: number = ƒ.Component.registerSubclass(WallDamaging);
     // Properties may be mutated by users in the editor via the automatically created user interface
-    public message: string = "PipeLogic added to ";
-    
-    //public pipeBody: ƒ.
+    public message: string = "WallDamaging added to ";
+
+    rigidBody: ƒ.ComponentRigidbody;
+
     constructor() {
       super();
 
@@ -23,28 +22,27 @@ namespace Script {
       this.addEventListener(ƒ.EVENT.COMPONENT_REMOVE, this.hndEvent);
       this.addEventListener(ƒ.EVENT.NODE_DESERIALIZED, this.hndEvent);
     }
-    public pipeConstruct: ƒ.ComponentTransform;
+
     // Activate the functions of this component as response to events
     public hndEvent = (_event: Event): void => {
       switch (_event.type) {
         case ƒ.EVENT.COMPONENT_ADD:
           ƒ.Debug.log(this.message, this.node);
-          ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
           break;
         case ƒ.EVENT.COMPONENT_REMOVE:
           this.removeEventListener(ƒ.EVENT.COMPONENT_ADD, this.hndEvent);
           this.removeEventListener(ƒ.EVENT.COMPONENT_REMOVE, this.hndEvent);
           break;
         case ƒ.EVENT.NODE_DESERIALIZED:
-          this.pipeConstruct = this.node.getComponent(ƒ.ComponentTransform);
+          this.rigidBody = this.node.getComponent(ƒ.ComponentRigidbody);
+          this.rigidBody.addEventListener(ƒ.EVENT_PHYSICS.COLLISION_ENTER,this.onCollisionEnter);
           // if deserialized the node is now fully reconstructed and access to all its components and children is possible
           break;
       }
     }
-    public speed: number = 1;
-    private update = (_event: Event): void => {
-      // console.log("moving!")
-      this.pipeConstruct.mtxLocal.translateX(-this.speed);
+    onCollisionEnter(_event: ƒ.EventPhysics){
+
+
     }
 
     // protected reduceMutator(_mutator: ƒ.Mutator): void {

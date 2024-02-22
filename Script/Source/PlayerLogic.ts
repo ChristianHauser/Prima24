@@ -3,17 +3,17 @@ namespace Script {
   
   ƒ.Project.registerScriptNamespace(Script);  // Register the namespace to FUDGE for serialization
 
-  export class PlayerMovement extends ƒ.ComponentScript {
+  export class PlayerLogic extends ƒ.ComponentScript {
     // Register the script as component for use in the editor via drag&drop
-    public static readonly iSubclass: number = ƒ.Component.registerSubclass(PlayerMovement);
+    public static readonly iSubclass: number = ƒ.Component.registerSubclass(PlayerLogic);
     // Properties may be mutated by users in the editor via the automatically created user interface
-    public message: string = "PlayerMovement added to ";
+    public message: string = "PlayerLogic added to ";
     public playerModel: ƒ.ComponentTransform;
     public playerRigidBody: ƒ.ComponentRigidbody;
     public projectile: ƒ.ComponentRigidbody;
 
 
-    //NEWSTUFF
+    
     //private viewport: ƒ.Viewport;
     private sceneGraph: ƒ.Node;
     private rotationRigid: ƒ.ComponentRigidbody;
@@ -26,8 +26,11 @@ namespace Script {
       super();
 
       // Don't start when running in editor
-      if (ƒ.Project.mode == ƒ.MODE.EDITOR)
+      if (ƒ.Project.mode == ƒ.MODE.EDITOR){
+        //console.log("notplaying");
         return;
+      }
+      
       
       // Listen to this component being added to or removed from a node
       this.addEventListener(ƒ.EVENT.COMPONENT_ADD, this.hndEvent);

@@ -75,8 +75,11 @@ var Script;
         };
         onCollisionEnter(_event) {
             if (_event.cmpRigidbody.node.name == "Torpedo") {
-                this.node.getComponent(ƒ.ComponentMesh).mtxPivot.translateY(100);
-                ƒ.Loop.stop();
+                //remove obstacle node so it can no longer damage the player
+                this.node.getParent().removeChild(this.node);
+            }
+            else if (_event.cmpRigidbody.node.name == "Player") {
+                console.log("PlayerHit");
             }
         }
     }
@@ -98,14 +101,6 @@ var Script;
         //initialize
         sceneGraph.getChildrenByName("Player")[0].getChildrenByName("Cannon")[0].getComponent(Script.SpawnProjectile).initialize();
     }
-    function shouldStopLoop(shouldStop) {
-        if (shouldStop) {
-            ƒ.Loop.stop();
-            return;
-        }
-        ƒ.Loop.continue();
-    }
-    Script.shouldStopLoop = shouldStopLoop;
     function setUpCamera() {
         let cameraReference = sceneGraph.getChildrenByName("Player")[0].getChildrenByName("CameraReference")[0];
         //.getChildrenByName("RotationRigidbody")[0]
@@ -164,7 +159,7 @@ var Script;
         };
         speed = 1;
         update = (_event) => {
-            console.log("moving!");
+            // console.log("moving!")
             this.pipeConstruct.mtxLocal.translateX(-this.speed);
         };
     }
@@ -174,15 +169,14 @@ var Script;
 (function (Script) {
     var ƒ = FudgeCore;
     ƒ.Project.registerScriptNamespace(Script); // Register the namespace to FUDGE for serialization
-    class PlayerMovement extends ƒ.ComponentScript {
+    class PlayerLogic extends ƒ.ComponentScript {
         // Register the script as component for use in the editor via drag&drop
-        static iSubclass = ƒ.Component.registerSubclass(PlayerMovement);
+        static iSubclass = ƒ.Component.registerSubclass(PlayerLogic);
         // Properties may be mutated by users in the editor via the automatically created user interface
-        message = "PlayerMovement added to ";
+        message = "PlayerLogic added to ";
         playerModel;
         playerRigidBody;
         projectile;
-        //NEWSTUFF
         //private viewport: ƒ.Viewport;
         sceneGraph;
         rotationRigid;
@@ -191,8 +185,10 @@ var Script;
         constructor() {
             super();
             // Don't start when running in editor
-            if (ƒ.Project.mode == ƒ.MODE.EDITOR)
+            if (ƒ.Project.mode == ƒ.MODE.EDITOR) {
+                //console.log("notplaying");
                 return;
+            }
             // Listen to this component being added to or removed from a node
             this.addEventListener("componentAdd" /* ƒ.EVENT.COMPONENT_ADD */, this.hndEvent);
             this.addEventListener("componentRemove" /* ƒ.EVENT.COMPONENT_REMOVE */, this.hndEvent);
@@ -253,7 +249,7 @@ var Script;
             this.playerRigidBody.setPosition(rigidbodyPosition);
         };
     }
-    Script.PlayerMovement = PlayerMovement;
+    Script.PlayerLogic = PlayerLogic;
 })(Script || (Script = {}));
 var Script;
 (function (Script) {
@@ -431,6 +427,48 @@ var Script;
         }
     }
     Script.UserInterface = UserInterface;
+})(Script || (Script = {}));
+var Script;
+(function (Script) {
+    var ƒ = FudgeCore;
+    ƒ.Project.registerScriptNamespace(Script); // Register the namespace to FUDGE for serialization
+    class WallDamaging extends ƒ.ComponentScript {
+        // Register the script as component for use in the editor via drag&drop
+        static iSubclass = ƒ.Component.registerSubclass(WallDamaging);
+        // Properties may be mutated by users in the editor via the automatically created user interface
+        message = "WallDamaging added to ";
+        rigidBody;
+        constructor() {
+            super();
+            // Don't start when running in editor
+            if (ƒ.Project.mode == ƒ.MODE.EDITOR)
+                return;
+            // Listen to this component being added to or removed from a node
+            this.addEventListener("componentAdd" /* ƒ.EVENT.COMPONENT_ADD */, this.hndEvent);
+            this.addEventListener("componentRemove" /* ƒ.EVENT.COMPONENT_REMOVE */, this.hndEvent);
+            this.addEventListener("nodeDeserialized" /* ƒ.EVENT.NODE_DESERIALIZED */, this.hndEvent);
+        }
+        // Activate the functions of this component as response to events
+        hndEvent = (_event) => {
+            switch (_event.type) {
+                case "componentAdd" /* ƒ.EVENT.COMPONENT_ADD */:
+                    ƒ.Debug.log(this.message, this.node);
+                    break;
+                case "componentRemove" /* ƒ.EVENT.COMPONENT_REMOVE */:
+                    this.removeEventListener("componentAdd" /* ƒ.EVENT.COMPONENT_ADD */, this.hndEvent);
+                    this.removeEventListener("componentRemove" /* ƒ.EVENT.COMPONENT_REMOVE */, this.hndEvent);
+                    break;
+                case "nodeDeserialized" /* ƒ.EVENT.NODE_DESERIALIZED */:
+                    this.rigidBody = this.node.getComponent(ƒ.ComponentRigidbody);
+                    this.rigidBody.addEventListener("ColliderEnteredCollision" /* ƒ.EVENT_PHYSICS.COLLISION_ENTER */, this.onCollisionEnter);
+                    // if deserialized the node is now fully reconstructed and access to all its components and children is possible
+                    break;
+            }
+        };
+        onCollisionEnter(_event) {
+        }
+    }
+    Script.WallDamaging = WallDamaging;
 })(Script || (Script = {}));
 var Script;
 (function (Script) {
