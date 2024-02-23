@@ -1,6 +1,6 @@
 # Prima24
   * Title: Submarun
-  * Author: Christian Hauser Josef Daiber / MIB / 265607
+  * Author: Christian Hauser / MIB / 265607
   * Year and season: 2023/2024 Winter
   * Course this development was created in: PRIMA 
   * Docent: Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl
