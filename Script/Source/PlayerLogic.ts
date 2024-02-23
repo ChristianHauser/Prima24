@@ -12,13 +12,16 @@ namespace Script {
     public playerRigidBody: ƒ.ComponentRigidbody;
     public projectile: ƒ.ComponentRigidbody;
 
-
+    UI: UserInterface;
     
     //private viewport: ƒ.Viewport;
     
     
     public isSpacePressed: boolean = false;
     //private playRotationBody: ƒ.ComponentRigidbody = getComponent.
+    private health: number;
+
+    private money: number;
     
     
     constructor() {
@@ -51,17 +54,48 @@ namespace Script {
         case ƒ.EVENT.NODE_DESERIALIZED:
           // if deserialized the node is now fully reconstructed and access to all its components and children is possible
           this.playerRigidBody = this.node.getComponent(ƒ.ComponentRigidbody);
-          
+          this.playerRigidBody.addEventListener(ƒ.EVENT_PHYSICS.COLLISION_ENTER, this.onPlayerCollision);
+          this.money = 0;
+          this.accessPlayerHealth();
+          // console.log("the player health is " + this.health);
+          ƒ.AudioManager.default.listenWith(this.node.getComponent(ƒ.ComponentAudioListener));
           //this.rotationRigid = this.sceneGraph.getChildrenByName("Player")[0].getChildrenByName("PlayerModel")[0].getComponent(ƒ.ComponentRigidbody);
           //this.update;
           break;
       }
     }
 
+
+    
+    accessPlayerHealth = async() => {
+      while (!externalData) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+      this.health = externalData.playerHealth.value;
+      healthUI.healthRemaining = this.health;
+      while(!timeUI) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      } 
+      this.UI = sceneGraph.getChildrenByName("UIElement")[0].getComponent(UserInterface);
+      moneyUI.moneyCollected = this.money;
+    }
+
     
     public speed: number = 4;
     public torque: number = 0.2;
+
     
+    
+    onPlayerCollision(_event: ƒ.EventPhysics) {
+      if (_event.cmpRigidbody.node.name == "Amunition") {
+        this.node.getChildrenByName("Cannon")[0].getComponent(SpawnProjectile).increaseAmunition();
+      }
+      if (_event.cmpRigidbody.node.name == "Coin") {
+        if(!this.money) this.money = 0;
+        this.money++;
+        moneyUI.moneyCollected = this.money;
+      }
+      }
     
   
     private update = (_event: Event): void => {
@@ -97,6 +131,7 @@ namespace Script {
       
       
       if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE])){
+        if (this.isDead) {return} else
         if(this.isSpacePressed == false){
           this.isSpacePressed = true;
           this.node.getChildrenByName("Cannon")[0].getComponent(SpawnProjectile).checkForAmunition();
@@ -112,6 +147,31 @@ namespace Script {
       this.playerRigidBody.setRotation(ƒ.Vector3.ZERO());
       this.playerRigidBody.setPosition(rigidbodyPosition);
     };
+
+    isDead: boolean = false;
+    public receiveDamage() {
+      if (this.health > 0){
+        console.log("current health: " + this.health);
+        this.health--;
+        healthUI.healthRemaining = this.health;
+      } else if (this.isDead == false) {
+        this.isDead = true;
+        console.log("game over.");
+        this.node.getComponent(ƒ.ComponentTransform).mtxLocal.rotateZ(180);
+        let playerModel = this.node.getChildrenByName("PlayerModel")[0];
+        let cannon = this.node.getChildrenByName("Cannon")[0];
+        this.node.removeChild(playerModel);
+        this.node.removeChild(cannon);
+        // this.node.removeComponent(this.node.getComponent(ƒ.ComponentRigidbody));
+        sceneGraph.addChild(playerModel);
+        playerModel.addComponent(new FlyWithPipe());
+        playerModel.getComponent(FlyWithPipe).manualFlyAlong(playerModel.getComponent(ƒ.ComponentTransform));
+        return;
+      } else {
+        console.log("player is dead");
+      }
+
+    }
 
     // protected reduceMutator(_mutator: ƒ.Mutator): void {
     //   // delete properties that should not be mutated

@@ -1,0 +1,22 @@
+{
+  "minimumAmunition": {
+    "info": "Minimum Amoumt of Amunition which is spawned in each pipe. If Number exceeds all itemslots, the max possible number is added.",
+    "value": 1
+  },
+  "maximumAmunition": {
+    "info": "Maximum Amoumt of Amunition which is spawned in each pipe. If Number exceeds all itemslots, no more than possible can be added anyway.",
+    "value": 4
+  },
+  "coinSpawnRate": {
+    "info": "The Chance of a coin to spawn in a field without any Amunition",
+    "value": 0.4
+  },
+  "playerHealth": {
+    "info": "The Lifes at Start",
+    "value": 3
+  },
+  "starterAmunition": {
+    "info": "The Amunition at Start",
+    "value": 2
+  }
+}

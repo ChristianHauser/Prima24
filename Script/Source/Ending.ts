@@ -6,7 +6,7 @@ namespace Script {
     // Register the script as component for use in the editor via drag&drop
     public static readonly iSubclass: number = ƒ.Component.registerSubclass(Ending);
     // Properties may be mutated by users in the editor via the automatically created user interface
-    public message: string = "CustomComponentScript added to ";
+    public message: string = "Ending added to ";
 
     rigidBody: ƒ.ComponentRigidbody;
 
@@ -27,7 +27,7 @@ namespace Script {
     public hndEvent = (_event: Event): void => {
       switch (_event.type) {
         case ƒ.EVENT.COMPONENT_ADD:
-          ƒ.Debug.log(this.message, this.node);
+          // ƒ.Debug.log(this.message, this.node);
           break;
         case ƒ.EVENT.COMPONENT_REMOVE:
           this.removeEventListener(ƒ.EVENT.COMPONENT_ADD, this.hndEvent);
@@ -41,12 +41,11 @@ namespace Script {
       }
     }
     onCollisionEnter(_event: ƒ.EventPhysics) {
+      // console.log(_event.cmpRigidbody.node.name);
       if (_event.cmpRigidbody.node.name == "Torpedo") {
+        // console.log("HITBYBULLET");
         //remove obstacle node so it can no longer damage the player
         this.node.getParent().removeChild(this.node);
-        _event.cmpRigidbody.node.getParent().removeChild(_event.cmpRigidbody.node);
-      }else if(_event.cmpRigidbody.node.name == "Player"){
-        console.log("PlayerHit");
       }
 }      
   }

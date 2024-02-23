@@ -2,15 +2,13 @@ namespace Script {
   import ƒ = FudgeCore;
   ƒ.Project.registerScriptNamespace(Script);  // Register the namespace to FUDGE for serialization
 
-  export class WallDamaging extends ƒ.ComponentScript {
+  export class FlyWithPipe extends ƒ.ComponentScript {
     // Register the script as component for use in the editor via drag&drop
-    public static readonly iSubclass: number = ƒ.Component.registerSubclass(WallDamaging);
+    public static readonly iSubclass: number = ƒ.Component.registerSubclass(FlyWithPipe);
     // Properties may be mutated by users in the editor via the automatically created user interface
-    public message: string = "WallDamaging added to ";
+    public message: string = "FlyWithPipe added to ";
 
-    rigidBody: ƒ.ComponentRigidbody;
-
-    
+    transformComponent: ƒ.ComponentTransform;
 
     constructor() {
       super();
@@ -30,28 +28,36 @@ namespace Script {
       switch (_event.type) {
         case ƒ.EVENT.COMPONENT_ADD:
           // ƒ.Debug.log(this.message, this.node);
+          ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
           break;
         case ƒ.EVENT.COMPONENT_REMOVE:
           this.removeEventListener(ƒ.EVENT.COMPONENT_ADD, this.hndEvent);
           this.removeEventListener(ƒ.EVENT.COMPONENT_REMOVE, this.hndEvent);
           break;
         case ƒ.EVENT.NODE_DESERIALIZED:
-          this.rigidBody = this.node.getComponent(ƒ.ComponentRigidbody);
-          this.rigidBody.addEventListener(ƒ.EVENT_PHYSICS.COLLISION_ENTER,this.onCollisionEnter);
+          this.transformComponent = this.node.getComponent(ƒ.ComponentTransform);
           // if deserialized the node is now fully reconstructed and access to all its components and children is possible
           break;
       }
     }
-    onCollisionEnter(_event: ƒ.EventPhysics){
-      if (_event.cmpRigidbody.node.name == "Player") {
-        this.node.dispatchEvent(new Event("WallHitByPlayer", {bubbles : true}));
-      }
 
+    manualFlyAlong(transformComponent: ƒ.ComponentTransform) {
+      this.transformComponent = transformComponent;
+      // ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
     }
 
-    // protected reduceMutator(_mutator: ƒ.Mutator): void {
-    //   // delete properties that should not be mutated
-    //   // undefined properties and private fields (#) will not be included by default
-    // }
+    update = (_event: Event): void => {
+      if(this.transformComponent == undefined) {
+        return;
+      }
+        this.transformComponent.mtxLocal.translateX(-pipeSpeed);
+      // //   console.log("my parent is " + this.node.name);
+      // //         } catch (error) {
+      // //   console.log(error);
+      // // }
+      // console.log(this.node.getComponents(ƒ.ComponentTransform));
+
+  
   }
+}
 }

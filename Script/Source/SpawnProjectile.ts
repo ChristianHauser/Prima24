@@ -9,7 +9,7 @@ namespace Script {
     public static readonly iSubclass: number = ƒ.Component.registerSubclass(SpawnProjectile);
     // Properties may be mutated by users in the editor via the automatically created user interface
     public message: string = "SpawnProjectile added to ";
-    public amunition: number = 2;
+    public amunition: number;
 
     private torpedoResource: ƒ.Graph;
     
@@ -33,10 +33,11 @@ namespace Script {
     }
     public pipeConstruct: ƒ.ComponentTransform;
     // Activate the functions of this component as response to events
+    public sound: ƒ.ComponentAudio;
     public hndEvent = (_event: Event): void => {
       switch (_event.type) {
         case ƒ.EVENT.COMPONENT_ADD:
-          ƒ.Debug.log(this.message, this.node);
+          // ƒ.Debug.log(this.message, this.node);
           // this.initialize();
           break;
         case ƒ.EVENT.COMPONENT_REMOVE:
@@ -45,9 +46,22 @@ namespace Script {
           break;
         case ƒ.EVENT.NODE_DESERIALIZED:
           this.pipeConstruct = this.node.getComponent(ƒ.ComponentTransform);
+          this.sound = this.node.getComponent(ƒ.ComponentAudio);
+          this.accessAmunition();
           // if deserialized the node is now fully reconstructed and access to all its components and children is possible
           break;
       }
+    }
+
+    accessAmunition = async() => {
+      while (!externalData) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+      this.amunition = externalData.starterAmunition.value;
+      while (!amunitionUI) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+      amunitionUI.amunitionRemaining = this.amunition;
     }
 
     initialize = async () => {
@@ -61,11 +75,19 @@ namespace Script {
       }
     }
 
+    increaseAmunition() {
+      this.amunition++;
+      amunitionUI.amunitionRemaining = this.amunition;
+    }
+
     spawnProjectile = async () => {
+      console.log("shootingSound");
+      this.sound.play(true);
       let graphInstance : ƒ.GraphInstance = await ƒ.Project.createGraphInstance(
         this.torpedoResource);
       this.node.addChild(graphInstance);
       this.amunition--;
+      amunitionUI.amunitionRemaining = this.amunition;     
     }
 
     // protected reduceMutator(_mutator: ƒ.Mutator): void {

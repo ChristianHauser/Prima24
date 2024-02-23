@@ -30,7 +30,7 @@ namespace Script {
     public hndEvent = (_event: Event): void => {
       switch (_event.type) {
         case ƒ.EVENT.COMPONENT_ADD:
-          this.node.addEventListener(ƒ.EVENT.RENDER_PREPARE, this.update);
+          // this.node.addEventListener(ƒ.EVENT.RENDER_PREPARE, this.update);
           break;
           case ƒ.EVENT.COMPONENT_REMOVE:
           this.removeEventListener(ƒ.EVENT.COMPONENT_ADD, this.hndEvent);
