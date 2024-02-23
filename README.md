@@ -1,6 +1,6 @@
 # Prima24
   * Title: Submarun
-  * Author: Christian Hauser / MIB / 265607
+  * Author: Christian Hauser / MIB / 263609
   * Year and season: 2023/2024 Winter
   * Course this development was created in: PRIMA 
   * Docent: Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl
@@ -17,8 +17,8 @@ https://docs.google.com/document/d/1mTExThxlzYXiJvk5oiKpVPf0sh90cMzLoXPZLW37s58/
 # Controls
 WASD or Arrowkeys to move, Spacebar to shoot
 
-## Checklist for Vampire Runner
-A more detailed version can be found in the Design Document which I linked to above
+## Checklist Criterias
+Get a broader view of these in my Designdocument
 
 | Nr | Criterion | Explanation | 
 | :---: | :---: | --- | 
