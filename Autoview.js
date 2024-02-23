@@ -22,7 +22,7 @@ window.addEventListener("load", init);
 // show dialog for startup, user interaction required e.g. for starting audio
 function init(_event)/* : void */ {
   let dialog/* : HTMLDialogElement */ = document.querySelector("dialog");
-  dialog.querySelector("h1").textContent = Submarun;
+  dialog.querySelector("h1").textContent = "Submarun";
   dialog.addEventListener("click", function (_event) {
     dialog.close();
     let graphId/* : string */ = document.head.querySelector("meta[autoView]").getAttribute("autoView")
