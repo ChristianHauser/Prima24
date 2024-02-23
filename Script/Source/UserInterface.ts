@@ -49,7 +49,11 @@ namespace Script {
           break;
       }
     }
-
+    
+    stopTimer() {
+      this.runGoing = false;
+    }
+    
     runTimer = async () => {
       while(this.runGoing) {
         this.updateTimer()

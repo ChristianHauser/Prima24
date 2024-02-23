@@ -88,6 +88,12 @@ namespace Script {
     healthUI = new HealthUI();
     amunitionUI = new AmunitionUI();
     moneyUI = new MoneyUI();
+
+    //spawn pipes
+
+    let pipeSpawner: PipeSpawner = new PipeSpawner();
+    await pipeSpawner.spawnPipes(5);
+    console.log(sceneGraph.getChildren);
     startGame();
   }
 

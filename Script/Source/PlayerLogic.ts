@@ -155,6 +155,7 @@ namespace Script {
         this.health--;
         healthUI.healthRemaining = this.health;
       } else if (this.isDead == false) {
+        this.UI.stopTimer();
         this.isDead = true;
         console.log("game over.");
         this.node.getComponent(ƒ.ComponentTransform).mtxLocal.rotateZ(180);

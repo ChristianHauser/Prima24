@@ -184,6 +184,10 @@ var Script;
         Script.healthUI = new Script.HealthUI();
         Script.amunitionUI = new Script.AmunitionUI();
         Script.moneyUI = new Script.MoneyUI();
+        //spawn pipes
+        let pipeSpawner = new Script.PipeSpawner();
+        await pipeSpawner.spawnPipes(5);
+        console.log(Script.sceneGraph.getChildren);
         startGame();
     }
     function startGame() {
@@ -472,6 +476,7 @@ var Script;
                 Script.healthUI.healthRemaining = this.health;
             }
             else if (this.isDead == false) {
+                this.UI.stopTimer();
                 this.isDead = true;
                 console.log("game over.");
                 this.node.getComponent(ƒ.ComponentTransform).mtxLocal.rotateZ(180);
@@ -741,6 +746,9 @@ var Script;
                     break;
             }
         };
+        stopTimer() {
+            this.runGoing = false;
+        }
         runTimer = async () => {
             while (this.runGoing) {
                 this.updateTimer();
@@ -914,6 +922,42 @@ var Script;
         };
     }
     Script.MoveRigidAlong = MoveRigidAlong;
+})(Script || (Script = {}));
+var Script;
+(function (Script) {
+    var ƒ = FudgeCore;
+    class PipeSpawner {
+        pipeResource;
+        pipeXOffset = 1500;
+        currentPipeX = 0;
+        constructor() {
+            this.loadResource();
+        }
+        loadResource = async () => {
+            await new Promise((resolve) => setTimeout(resolve, 200));
+            this.pipeResource = ƒ.Project.getResourcesByName("Pipe")[0];
+        };
+        createPipeInstance = async () => {
+            let pipeInstance = await ƒ.Project.createGraphInstance(this.pipeResource);
+            return pipeInstance;
+        };
+        async spawnPipes(amount) {
+            while (!this.pipeResource) {
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+            }
+            for (let i = 0; i < amount; i++) {
+                let node = new ƒ.Node("pipeParent");
+                node.addComponent(new ƒ.ComponentTransform());
+                let thisPipe = await this.createPipeInstance();
+                node.addChild(thisPipe);
+                node.getComponent(ƒ.ComponentTransform).mtxLocal.translateX(this.currentPipeX + this.pipeXOffset);
+                this.currentPipeX = node.getComponent(ƒ.ComponentTransform).mtxLocal.translation.x;
+                console.log("translation is: " + this.currentPipeX);
+                Script.sceneGraph.addChild(node);
+            }
+        }
+    }
+    Script.PipeSpawner = PipeSpawner;
 })(Script || (Script = {}));
 var Script;
 (function (Script) {

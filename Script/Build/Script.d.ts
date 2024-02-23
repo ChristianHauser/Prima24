@@ -158,6 +158,7 @@ declare namespace Script {
         runGoing: boolean;
         constructor();
         hndEvent: (_event: Event) => void;
+        stopTimer(): void;
         runTimer: () => Promise<void>;
         updateTimer: () => Promise<void>;
     }
@@ -199,6 +200,18 @@ declare namespace Script {
         hndEvent: (_event: Event) => void;
         initComponents: () => Promise<void>;
         update: () => void;
+    }
+}
+declare namespace Script {
+    import ƒ = FudgeCore;
+    class PipeSpawner {
+        pipeResource: ƒ.Graph;
+        pipeXOffset: number;
+        currentPipeX: number;
+        constructor();
+        loadResource: () => Promise<void>;
+        createPipeInstance: () => Promise<ƒ.GraphInstance>;
+        spawnPipes(amount: number): Promise<void>;
     }
 }
 declare namespace Script {
