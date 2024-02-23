@@ -9,7 +9,7 @@
   },
   "coinSpawnRate": {
     "info": "The Chance of a coin to spawn in a field without any Amunition",
-    "value": 0.4
+    "value": 0.9
   },
   "playerHealth": {
     "info": "The Lifes at Start",
